@@ -16,13 +16,13 @@ echo " EC2 instance created successfully with IP: $PUBLIC_IP"
 
 # Step 2: Wait for EC2 to be ready
 echo " Waiting for EC2 to be ready (30 seconds)..."
-sleep 60
+sleep 30
 
 # Step 3: Copy index.html to EC2 instance
 echo " Copying index.html to EC2..."
 
 # Make sure you replace shell_script.pem with your actual PEM file
-scp -i shell_script.pem -o StrictHostKeyChecking=no ./index.html ec2-user@$PUBLIC_IP:/home/ec2-user/
+scp -i two-tier-app-k8s.pem -o StrictHostKeyChecking=no ./index.html ec2-user@$PUBLIC_IP:/home/ec2-user/
 
 # Step 4: SSH and start Python server
 echo " Starting HTTP server on EC2..."
