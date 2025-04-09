@@ -56,3 +56,75 @@ http://<your-ec2-public-ip>
 
 
 
+# EC2 Instance Creation Script (with Auto IP Fetch)
+
+This script automates the creation of an AWS EC2 instance using AWS CLI and retrieves its Public IP address.
+
+
+efore running this script, make sure you have:
+
+✅ AWS CLI installed and configured (aws configure)
+
+✅ A valid Key Pair created in AWS EC2 Console
+
+✅ A valid Security Group ID
+
+✅ A valid AMI ID for your region (e.g., Amazon Linux 2)
+
+✅ Permissions to create EC2 instances in your AWS account
+
+📄 Script Overview
+The script performs the following steps:
+
+Launches an EC2 instance using your provided configuration
+
+Waits for the instance to initialize
+
+Tries up to 5 times (every 10 seconds) to fetch the Public IP address
+
+If found, prints the IP — else shows an error
+
+⚙️ How to Use
+Update the script with your own values:
+
+AMI_ID → Your preferred Amazon Machine Image ID
+
+KEY_NAME → Your key pair name (no .pem extension)
+
+SECURITY_GROUP → Your security group ID
+
+REGION → Your desired AWS region
+
+Make the script executable:
+
+bash
+Copy
+Edit
+chmod +x create-ec2.sh
+Run the script:
+
+bash
+Copy
+Edit
+./create-ec2.sh
+✅ If successful, you’ll see:
+
+typescript
+Copy
+Edit
+EC2 instance ka public IP address: <Your IP Here>
+📌 Sample Output
+css
+Copy
+Edit
+EC2 instance i-1234567890abcdef0 create ho raha hai...
+Public IP address abhi tak available nahi hai. Wait kar rahe hain... (1/5)
+Public IP address abhi tak available nahi hai. Wait kar rahe hain... (2/5)
+EC2 instance ka public IP address: 3.120.45.89
+
+
+
+
+
+
+
