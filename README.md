@@ -175,15 +175,15 @@ Usage:
 Make the script executable:
 
 bash
-Copy
-Edit
+
 chmod +x master-script.sh
+
 Run the script:
 
-bash
-Copy
-Edit
+bash run this cmd in ssh:
+
 ./master-script.sh
+
 After running the script:
 
 A new EC2 instance will be created.
