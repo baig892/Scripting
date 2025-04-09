@@ -125,6 +125,78 @@ EC2 instance ka public IP address: 3.120.45.89
 
 
 
+### master-script.sh Overview
+
+
+The master-script.sh automates the process of creating an EC2 instance, copying an index.html file to the instance, and starting a local HTTP server to serve the file. The script also opens the instance's public IP in your default browser for easy access to the content.
+
+Workflow:
+
+Create EC2 Instance:
+
+The script calls create-ec2-script.sh to create a new EC2 instance on AWS.
+
+It extracts the instance's public IP address after successful creation.
+
+Wait for EC2 to be Ready:
+
+The script waits for 30 seconds to ensure that the EC2 instance is fully ready to accept connections. You may need to increase this wait time if your instance takes longer to start.
+
+Copy index.html to EC2:
+
+The script copies a predefined index.html file from your local machine to the EC2 instance using scp (secure copy).
+
+The index.html file will be placed in the default directory on the EC2 instance.
+
+Start HTTP Server on EC2:
+
+It then starts a Python HTTP server on port 8080 to serve the index.html file.
+
+The server runs in the background, allowing you to access the file through your browser.
+
+Open URL in Browser:
+
+The script automatically opens the EC2 instance's public IP in your browser: http://<EC2-PUBLIC-IP>:8080, where the index.html file is being served.
+
+Requirements:
+Private Key File (.pem):
+
+Ensure you have the correct private key file (shell_script.pem) associated with the EC2 instance.
+
+The private key file must have restricted permissions (chmod 400 shell_script.pem).
+
+AWS CLI installed and configured on your machine.
+
+Security Group Configuration:
+
+The EC2 instance’s security group should allow inbound connections on port 22 (SSH) and port 8080 (HTTP).
+
+Usage:
+Make the script executable:
+
+bash
+Copy
+Edit
+chmod +x master-script.sh
+Run the script:
+
+bash
+Copy
+Edit
+./master-script.sh
+After running the script:
+
+A new EC2 instance will be created.
+
+The index.html file will be uploaded to the instance.
+
+A Python HTTP server will be started on the instance.
+
+The URL http://<EC2-PUBLIC-IP>:8080 will open in your browser, where you can see the contents of the index.html file.
+
+
+
+
 
 
 
